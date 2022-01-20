@@ -1,0 +1,5 @@
+export const UPDATE_SCORE = 'UPDATE_SCORE';
+export const SAVE_URL_IMAGE = 'SAVE_URL_IMAGE';
+export const SAVE_USER_NAME = 'SAVE_USER_NAME';
+export const RESET_DATA = 'RESET_DATA';
+export const GET_PREFERENCES = 'GET_PREFERENCES';
