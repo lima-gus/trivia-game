@@ -91,7 +91,6 @@ class Game extends Component {
     ];
     const CHANGE_INDEX = -1;
     const CONTROL_PROBABILITY = 0.5;
-    // Código baseado no link: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array resposta do usuário yuval.bl
     const randomArray = answers.sort(() => (Math.random() > CONTROL_PROBABILITY
       ? 1
       : CHANGE_INDEX));
@@ -112,9 +111,13 @@ class Game extends Component {
       const BASE_SCORE = 10;
       const currentScore = player.score + BASE_SCORE + (counter * points[difficulty]);
       const currentAssertions = player.assertions + 1;
-      const scoreStorage = JSON.stringify({ player: { ...player,
-        score: currentScore,
-        assertions: currentAssertions } });
+      const scoreStorage = JSON.stringify({
+        player: {
+          ...player,
+          score: currentScore,
+          assertions: currentAssertions
+        }
+      });
       localStorage.setItem('state', scoreStorage);
       const { updateScore } = this.props;
       updateScore(currentScore);
@@ -130,11 +133,12 @@ class Game extends Component {
   returnNextButton() {
     return (
       <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
         type="button"
-        onClick={ this.handleClickNext }
+        onClick={this.handleClickNext}
         data-testid="btn-next"
       >
-        Próxima
+        Next
 
       </button>
     );
@@ -179,37 +183,40 @@ class Game extends Component {
     return (
       <div>
         <Header />
-        { questions.length > 0
-        && (
-          <div>
-            <div>
-              { counter }
+        {questions.length > 0
+          && (
+            <div className="w-full flex items-center h-96">
+              <div className="m-auto">
+                <div className="flex justify-evenly uppercase text-gray-700 text-xs font-bold mb-2">
+                  <p> {`${'Time: '} ${counter}`} </p>
+                  <p data-testid="question-category">{questions[index].category}</p>
+                </div>
+                <div className="flex justify-center mt-5">
+                  <p data-testid="question-text">
+                    {questions[index].question.replace(/&quot;/g, "'")}
+                  </p>
+                </div>
+                <div className="flex items-center justify-evenly">
+                  {randomAnswers.map((answer) => (
+                    <button
+                      key={answer.text}
+                      style={{ backgroundColor: 'rgb(243 244 246)', color: 'rgb(59 130 246)', fontWeight: '700', borderRadius: '0.25rem', padding: '5px', borderRadius: '0.25rem', marginTop: '10px' }}
+                      className={answer.type === 'correct' ? correctClass : wrongClass}
+                      type="button"
+                      onClick={this.handleClickAnswer}
+                      disabled={isAnswersDisabled}
+                    >
+                      {answer.text.replace(/&quot;/g, '"')}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex justify-center mt-5">
+                  {isButtonShow && this.returnNextButton()}
+                </div>
+              </div>
             </div>
-            <h4 data-testid="question-category">{ questions[index].category }</h4>
-            <p data-testid="question-text">
-              { questions[index].question.replace(/&quot;/g, '"') }
-            </p>
-            <div>
-              {randomAnswers.map((answer) => (
-                <button
-                  key={ answer.text }
-                  data-testid={
-                    answer.type === 'correct'
-                      ? 'correct-answer'
-                      : `wrong-answer ${answer.index}`
-                  }
-                  className={ answer.type === 'correct' ? correctClass : wrongClass }
-                  type="button"
-                  onClick={ this.handleClickAnswer }
-                  disabled={ isAnswersDisabled }
-                >
-                  { answer.text.replace(/&quot;/g, '"') }
-                </button>
-              ))}
-            </div>
-            { isButtonShow && this.returnNextButton() }
-          </div>
-        )}
+          )}
+
       </div>
     );
   }
