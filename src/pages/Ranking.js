@@ -31,25 +31,45 @@ class Ranking extends React.Component {
   render() {
     const { ranking } = this.state;
     return (
-      <div>
-        <h1 data-testid="ranking-title">
-          Ranking
-        </h1>
-        { ranking.map((person, index) => (
-          <div key={ index }>
-            <img src={ person.picture } alt="ranking person" />
-            <h3 data-testid={ `player-name-${index}` }>{ person.name }</h3>
-            <h3 data-testid={ `player-score-${index}` }>{ person.score }</h3>
-          </div>
-        )) }
-        <Link to="/">
-          <button
-            type="button"
-            data-testid="btn-go-home"
+      <div className="w-full flex h-screen">
+        <div className="m-auto">
+          <h1
+            className="uppercase text-gray-700 text-xs font-bold mb-2"
+            data-testid="ranking-title"
           >
-            Home
-          </button>
-        </Link>
+            Ranking
+          </h1>
+          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            {ranking.map((person, index) => (
+              <div
+                className="bg-gray-100 flex items-center mt-3 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                key={index}>
+                <img className="w-20 h-20 rounded-full mr-4" src={person.picture} alt="ranking person" />
+                <div className="text-sm">
+                  <div>
+                    <p className="text-gray-700 text-sm font-bold mt-2">Name</p>
+                    <p className="text-gray-700" data-testid={`player-name-${index}`}> {person.name}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 text-sm font-bold mt-2">Points</p>
+                    <p className="text-gray-700" data-testid={`player-score-${index}`}>{person.score}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className="flex justify-center mt-5">
+              <Link to="/">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-none focus:shadow-outline"
+                  type="button"
+                  data-testid="btn-go-home"
+                >
+                  Home
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
