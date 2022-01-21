@@ -81,8 +81,6 @@ class Feedback extends React.Component {
   }
 
   render() {
-    const { userName } = this.props;
-    console.log(userName);
     const MIN_QUESTIONS = 3;
     const { assertions } = this.state;
     return (
