@@ -42,33 +42,40 @@ class Feedback extends React.Component {
     return (
       <div>
         <Header />
-        <p data-testid="feedback-text">{ phrase }</p>
-        <span>
-          Você acertou
-          <p data-testid="feedback-total-question">{ assertions }</p>
-          questões
-        </span>
-        <span>
-          Um total de
-          <p data-testid="feedback-total-score">{ score }</p>
-          pontos
-        </span>
-        <Link to="/ranking">
-          <button
-            type="button"
-            data-testid="btn-ranking"
-          >
-            Ver Ranking
-          </button>
-        </Link>
-        <Link to="/">
-          <button
-            type="button"
-            data-testid="btn-play-again"
-          >
-            Jogar Novamente
-          </button>
-        </Link>
+        <div className="w-full flex h-96">
+          <div className="m-auto">
+            <h1 className="uppercase text-gray-700 text-xs font-bold mb-2"> Feedback </h1>
+            <div className="bg-white w-full shadow-md rounded px-8 pt-6 pb-8 mb-4">
+              <p data-testid="feedback-text">{phrase}</p>
+              <div className="mt-3">
+                <p data-testid="feedback-total-question">{`${'You got'} ${assertions} ${'questions right'}`}</p>
+              </div>
+              <div className="mt-3 mb-3">
+                <p data-testid="feedback-total-score"> {`${'Total of'} ${score} ${'points'}`}</p>
+              </div>
+              <div className="inline-flex">
+                <Link to="/ranking">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l"
+                    type="button"
+                    data-testid="btn-ranking"
+                  >
+                    Leaderboard
+                  </button>
+                </Link>
+                <Link to="/">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r"
+                    type="button"
+                    data-testid="btn-play-again"
+                  >
+                    Play Again!
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -80,12 +87,12 @@ class Feedback extends React.Component {
     const { assertions } = this.state;
     return (
       <div>
-        { assertions < MIN_QUESTIONS
+        {assertions < MIN_QUESTIONS
           ? (
-            this.returnFeedback('Podia ser melhor...')
+            this.returnFeedback('Could be better 😞')
           )
           : (
-            this.returnFeedback('Mandou bem!')
+            this.returnFeedback('Nice job! 😄')
           )}
       </div>
     );
