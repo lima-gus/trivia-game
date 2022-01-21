@@ -44,41 +44,79 @@ class Settings extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <div>
-        <h1 data-testid="settings-title"> Configurações </h1>
-        <form>
-          <label htmlFor="categories">
-            Selecione a categoria:
-            <select name="category" id="category" onChange={ this.handleChange }>
-              <option defaultValue="">Todas</option>
-              {categories.map(({ id, name }) => (
-                <option key={ id } value={ id }>{ name }</option>))}
-            </select>
-          </label>
-          <label htmlFor="difficulty">
-            Selecione a dificuldade:
-            <select name="difficulty" id="difficulty" onChange={ this.handleChange }>
-              <option defaultValue="">Todas</option>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-          </label>
-          <label htmlFor="type">
-            Selecione o tipo:
-            <select name="questionsType" id="type" onChange={ this.handleChange }>
-              <option defaultValue="">Todos</option>
-              <option value="multiple">Múltipla escolha</option>
-              <option value="boolean">Verdadeiro ou falso</option>
-            </select>
-          </label>
-          <button
-            type="button"
-            onClick={ this.handleClick }
-          >
-            Enviar
-          </button>
-        </form>
+      <div className="w-full flex h-screen">
+        <div className="m-auto">
+          <h1
+            className="uppercase text-gray-700 text-xs font-bold mb-2"
+            data-testid="settings-title"
+          > Settings </h1>
+          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div className="relative">
+              <label
+                htmlFor="categories"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Category
+                <select
+                  className="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  name="category"
+                  id="category"
+                  onChange={this.handleChange}
+                >
+                  <option defaultValue="">All</option>
+                  {categories.map(({ id, name }) => (
+                    <option key={id} value={id}>{name}</option>))}
+                </select>
+              </label>
+            </div>
+            <div>
+              <label
+                htmlFor="difficulty"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Difficulty
+                <select
+                  className="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  name="difficulty"
+                  id="difficulty"
+                  onChange={this.handleChange}
+                >
+                  <option defaultValue="">All</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </label>
+            </div>
+            <div>
+              <label
+                htmlFor="type"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Types
+                <select
+                  className="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  name="questionsType"
+                  id="type"
+                  onChange={this.handleChange}
+                >
+                  <option defaultValue="">All</option>
+                  <option value="multiple">Multiple choice</option>
+                  <option value="boolean">True of False</option>
+                </select>
+              </label>
+            </div>
+            <div className="flex justify-center mt-5">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+                onClick={this.handleClick}
+              >
+                Set
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
