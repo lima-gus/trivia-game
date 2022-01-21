@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchTokenTrivia } from '../services';
 import { resetUserData } from '../redux/actions';
+import logo from '../trivia.png';
 
 class Login extends React.Component {
   constructor(props) {
@@ -62,11 +63,13 @@ class Login extends React.Component {
   render() {
     const { name, email, isButtonDisabled } = this.state;
     return (
-      <div>
-        <form>
+      <div className="w-screen h-screen grid justify-items-center bg-gradient-to-r from-blue-500 to-indigo-500">
+        <img src={ logo } className="mt-10 max-h-40" alt="logo" />
+        <form className="">
           <label htmlFor="input-player-name">
             Nome:
             <input
+              className="text-lg shadow-xl mx-3 py-2 rounded-md"
               type="text"
               name="name"
               id="input-player-name"
@@ -78,6 +81,7 @@ class Login extends React.Component {
           <label htmlFor="input-gravatar-email">
             Email:
             <input
+              className="text-lg shadow-xl mx-3 py-2 rounded-md"
               type="email"
               name="email"
               id="input-gravatar-email"
@@ -87,21 +91,23 @@ class Login extends React.Component {
             />
           </label>
           <button
+            className="text-lg text-white bg-sky-600 hover:bg-sky-500 px-8 py-2 ml-2 rounded-md shadow-xl"
             type="button"
             data-testid="btn-play"
             disabled={ isButtonDisabled }
             onClick={ this.handleClick }
           >
-            Jogar
+            Play
           </button>
         </form>
 
         <Link to="/settings">
           <button
+            className="text-lg text-white bg-sky-600 hover:bg-sky-500 px-8 py-3 ml-2 rounded-md shadow-xl"
             type="button"
             data-testid="btn-settings"
           >
-            Configs
+            Settings
           </button>
         </Link>
       </div>

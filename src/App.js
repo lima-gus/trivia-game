@@ -1,7 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-// import logo from './trivia.png';
-import './App.css';
 import Login from './pages/Login';
 import Settings from './pages/Settings';
 import Game from './pages/Game';
@@ -17,14 +15,5 @@ export default function App() {
       <Route path="/feedback" component={ Feedback } />
       <Route path="/ranking" component={ Ranking } />
     </Switch>
-
-  // <div className="App">
-  //   <header className="App-header">
-  //     <img src={ logo } className="App-logo" alt="logo" />
-  //     <p>
-  //       SUA VEZ
-  //     </p>
-  //   </header>
-  // </div>
   );
 }
