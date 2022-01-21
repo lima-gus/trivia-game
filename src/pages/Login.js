@@ -63,35 +63,46 @@ class Login extends React.Component {
   render() {
     const { name, email, isButtonDisabled } = this.state;
     return (
-      <div className="w-screen h-screen grid justify-items-center bg-gradient-to-r from-blue-500 to-indigo-500">
+      <div className="w-full flex h-screen">
+        <div className="m-auto">
         <img src={ logo } className="mt-10 max-h-40" alt="logo" />
-        <form className="">
-          <label htmlFor="input-player-name">
-            Nome:
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div className="mb-4">
+          <label
+            htmlFor="input-player-name"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Name:
             <input
-              className="text-lg shadow-xl mx-3 py-2 rounded-md"
+              className="shadow-lg appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               name="name"
               id="input-player-name"
               data-testid="input-player-name"
               value={ name }
               onChange={ this.handleChange }
-            />
+              />
           </label>
-          <label htmlFor="input-gravatar-email">
-            Email:
+            </div>
+            <div className="mb-6">
+          <label
+            htmlFor="input-gravatar-email"
+            className="block text-gray-700 text-sm font-bold mb-2">
+            E-mail:
             <input
-              className="text-lg shadow-xl mx-3 py-2 rounded-md"
+              className="shadow-lg appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               name="email"
               id="input-gravatar-email"
               data-testid="input-gravatar-email"
               value={ email }
               onChange={ this.handleChange }
-            />
+              />
           </label>
+              </div>
+              <div className="flex items-center justify-evenly">
           <button
-            className="text-lg text-white bg-sky-600 hover:bg-sky-500 px-8 py-2 ml-2 rounded-md shadow-xl"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
             data-testid="btn-play"
             disabled={ isButtonDisabled }
@@ -99,17 +110,18 @@ class Login extends React.Component {
           >
             Play
           </button>
-        </form>
-
         <Link to="/settings">
           <button
-            className="text-lg text-white bg-sky-600 hover:bg-sky-500 px-8 py-3 ml-2 rounded-md shadow-xl"
+            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
             type="button"
             data-testid="btn-settings"
           >
             Settings
           </button>
         </Link>
+        </div>
+        </form>
+        </div>
       </div>
     );
   }
