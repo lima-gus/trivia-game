@@ -27,24 +27,26 @@ class Header extends React.Component {
   render() {
     const { urlImage, userName, score } = this.props;
     return (
-      <div>
+      <header className="w-full flex items-center justify-evenly mt-5">
         <img
+          className="w-20 h-20 rounded-full mr-4"
           src={ urlImage }
           alt="profile-img"
           data-testid="header-profile-picture"
         />
-        <h3 data-testid="header-player-name">
-          Jogador:
-          {' '}
+        <div>
+        <p className="text-gray-700 text-sm font-bold mt-2"> Player</p>
+        <p className="text-gray-700" data-testid="header-player-name">
           { userName }
-        </h3>
-        <h3>
-          Ponto:
-        </h3>
-        <h3 data-testid="header-score">
+        </p>
+        </div>
+        <div>
+        <p className="text-gray-700 text-sm font-bold mt-2"> Points </p>
+        <p className="text-gray-700" data-testid="header-score">
           { score }
-        </h3>
-      </div>
+        </p>
+        </div>
+      </header>
     );
   }
 }

@@ -31,7 +31,7 @@ class Ranking extends React.Component {
   render() {
     const { ranking } = this.state;
     return (
-      <div className="w-full flex h-screen">
+      <div className="w-full flex h-screen mt-5">
         <div className="m-auto">
           <h1
             className="uppercase text-gray-700 text-xs font-bold mb-2"
