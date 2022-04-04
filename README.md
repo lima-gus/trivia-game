@@ -4,8 +4,8 @@
 
 Esse projeto foi desenvolvido em grupo e o nosso objetivo era construir um jogo de perguntas e respostas utilizando a API [Opentdb](https://opentdb.com/).
 
-## Entregáveis
-Nessa aplicação o usuário deve estar apto a:
+## Objetivo
+Nessa aplicação o usuário deve estar apto à:
 
 - Logar utilizando um nome e um e-mail válido;
 - Caso tenha uma conta no [Gravatar](https://br.gravatar.com/) vinculada ao e-mail utilizado, sua imagem é associada ao perfil;
@@ -17,7 +17,6 @@ Nessa aplicação o usuário deve estar apto a:
 - [React](https://reactjs.org/)
 - [React Router](https://reactrouter.com/)
 - [Redux](https://redux.js.org/)
-- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
 - [Tailwind CSS](https://tailwindcss.com/)
 
 *O grupo decidiu estilizar o projeto individualmente, eu escolhi utilizar [Tailwind](https://tailwindcss.com/).*
